@@ -1,15 +1,16 @@
 package com.example.testlib
 
 import android.content.res.Resources
+import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import androidx.annotation.DrawableRes
 
-class TestLib {
+public class TestLib {
     companion object{
-        fun loadImageRes(res: Resources, @DrawableRes id: Int ){
+        public fun loadImageRes(res: Resources, @DrawableRes id: Int, width: Int, height: Int ): Bitmap {
             val source = ImageDecoder.createSource(res, id)
 
-            val bitmap = ImageDecoder.decodeBitmap(source){ imageDecoder, imageInfo, source ->
+            return ImageDecoder.decodeBitmap(source){ imageDecoder, imageInfo, source ->
                 val w = 100
                 val h = 100
                 imageDecoder.setTargetSize(w, h)
